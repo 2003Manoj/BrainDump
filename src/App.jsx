@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter as BrowserRouter, HashRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Login from './components/Login';
 import SignUp from './components/SignUp';
 import ForgotPassword from './components/ForgotPassword';
@@ -29,14 +29,17 @@ function App() {
     setCurrentUser(null);
   };
 
-  // Check if we're running in GitHub Pages by checking the window location
+  // Determine if we are on GitHub Pages
   const isGitHubPages = window.location.hostname === '2003manoj.github.io';
 
-  // Conditionally set basename based on the environment
+  // Conditionally set Router type based on environment
+  const RouterComponent = isGitHubPages ? BrowserRouter : Router; // Use BrowserRouter for GitHub Pages and HashRouter for local development
+
+  // For GitHub Pages, set basename to '/BrainDump', otherwise leave it empty for local
   const basename = isGitHubPages ? '/BrainDump' : '';
 
   return (
-    <Router basename={basename}> {/* Dynamically set basename */}
+    <RouterComponent basename={basename}>  {/* Conditionally set Router and basename */}
       <div className="app">
         <Routes>
           <Route path="/login" element={isLoggedIn ? <Navigate to="/dashboard" /> : <Login onLogin={handleLogin} />} />
@@ -46,7 +49,7 @@ function App() {
           <Route path="/" element={<Navigate to={isLoggedIn ? "/dashboard" : "/login"} />} />
         </Routes>
       </div>
-    </Router>
+    </RouterComponent>
   );
 }
 
