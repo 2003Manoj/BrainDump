@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Login from './components/Login';
 import SignUp from './components/SignUp';
 import ForgotPassword from './components/ForgotPassword';
@@ -30,29 +30,14 @@ function App() {
   };
 
   return (
-    <Router basename="/BrainDump"> {/* Added basename here */}
+    <Router basename="/BrainDump">
       <div className="app">
         <Routes>
-          <Route 
-            path="/login" 
-            element={isLoggedIn ? <Navigate to="/dashboard" /> : <Login onLogin={handleLogin} />} 
-          />
-          <Route 
-            path="/signup" 
-            element={isLoggedIn ? <Navigate to="/dashboard" /> : <SignUp />} 
-          />
-          <Route 
-            path="/forgot-password" 
-            element={isLoggedIn ? <Navigate to="/dashboard" /> : <ForgotPassword />} 
-          />
-          <Route 
-            path="/dashboard" 
-            element={isLoggedIn ? <Dashboard user={currentUser} onLogout={handleLogout} /> : <Navigate to="/login" />} 
-          />
-          <Route 
-            path="/" 
-            element={<Navigate to={isLoggedIn ? "/dashboard" : "/login"} />} 
-          />
+          <Route path="/login" element={isLoggedIn ? <Navigate to="/dashboard" /> : <Login onLogin={handleLogin} />} />
+          <Route path="/signup" element={isLoggedIn ? <Navigate to="/dashboard" /> : <SignUp />} />
+          <Route path="/forgot-password" element={isLoggedIn ? <Navigate to="/dashboard" /> : <ForgotPassword />} />
+          <Route path="/dashboard" element={isLoggedIn ? <Dashboard user={currentUser} onLogout={handleLogout} /> : <Navigate to="/login" />} />
+          <Route path="/" element={<Navigate to={isLoggedIn ? "/dashboard" : "/login"} />} />
         </Routes>
       </div>
     </Router>
