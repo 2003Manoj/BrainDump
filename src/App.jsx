@@ -30,6 +30,7 @@ function App() {
   };
 
   return (
+    // Correct the basename for production (GitHub Pages)
     <Router basename="/BrainDump">
       <div className="app">
         <Routes>
