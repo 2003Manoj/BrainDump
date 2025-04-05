@@ -6,9 +6,14 @@
     <title>404: Page Not Found</title>
   </head>
   <body>
+    <h1>404: Page Not Found</h1>
+    <p>Sorry, we couldn't find that page. But don’t worry, <a href="/BrainDump/">go back to the homepage</a>.</p>
     <script>
-      // Redirect all 404 errors to index.html to let React Router handle the routing
-      window.location.replace(window.location.pathname + window.location.search);
+      // Redirect all unknown paths back to index.html so React Router can handle them
+      const currentPath = window.location.pathname + window.location.search;
+      if (currentPath !== "/BrainDump/") {
+        window.location.replace("/BrainDump/");
+      }
     </script>
   </body>
 </html>
