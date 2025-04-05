@@ -1,0 +1,182 @@
+/* styles/NoteCard.module.css */
+.card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    animation: fadeIn 0.6s ease-in-out;
+    position: relative;
+  }
+  
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #ff8c00, #ff4500);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease-out;
+  }
+  
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  }
+  
+  .card:hover::before {
+    transform: scaleX(1);
+  }
+  
+  .cardContent {
+    padding: 20px;
+    flex: 1;
+  }
+  
+  .cardTitle {
+    color: #001f3f;
+    margin-bottom: 10px;
+    font-size: 18px;
+  }
+  
+  .cardDescription {
+    color: #444;
+    margin-bottom: 15px;
+    font-size: 15px;
+    line-height: 1.5;
+    /* For descriptions that are too long */
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+  }
+  
+  .cardDate {
+    color: #888;
+    font-size: 12px;
+    margin-top: auto;
+  }
+  
+  .cardActions {
+    display: flex;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border-top: 1px solid #eee;
+  }
+  
+  .editBtn, .deleteBtn {
+    flex: 1;
+    padding: 8px 0;
+    border: none;
+    border-radius: 5px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  
+  .editBtn {
+    background-color: #003366;
+    color: white;
+    margin-right: 8px;
+  }
+  
+  .editBtn:hover {
+    background-color: #00264d;
+  }
+  
+  .deleteBtn {
+    background-color: #fff;
+    color: #d63031;
+    border: 1px solid #d63031;
+  }
+  
+  .deleteBtn:hover {
+    background-color: #d63031;
+    color: white;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
+  /* Responsive styles */
+  @media screen and (max-width: 768px) {
+    .cardContent {
+      padding: 15px;
+    }
+    
+    .cardTitle {
+      font-size: 17px;
+      margin-bottom: 8px;
+    }
+    
+    .cardDescription {
+      font-size: 14px;
+      margin-bottom: 12px;
+    }
+    
+    .cardActions {
+      padding: 12px;
+    }
+    
+    .editBtn, .deleteBtn {
+      padding: 7px 0;
+      font-size: 14px;
+    }
+  }
+  
+  @media screen and (max-width: 480px) {
+    .cardContent {
+      padding: 12px;
+    }
+    
+    .cardTitle {
+      font-size: 16px;
+      margin-bottom: 6px;
+    }
+    
+    .cardDescription {
+      font-size: 13px;
+      margin-bottom: 10px;
+      -webkit-line-clamp: 3;
+    }
+    
+    .cardDate {
+      font-size: 11px;
+    }
+    
+    .cardActions {
+      padding: 10px;
+    }
+    
+    .editBtn, .deleteBtn {
+      padding: 6px 0;
+      font-size: 13px;
+    }
+  }
+  
+  /* For touch devices */
+  @media (hover: none) {
+    .card:hover {
+      transform: none;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    }
+    
+    .card::before {
+      transform: scaleX(1);
+      opacity: 0.5;
+    }
+  }

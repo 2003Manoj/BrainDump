@@ -1,0 +1,284 @@
+/* NoteForm.module.css - Eye-catching styling with animations and effects */
+
+@keyframes formReveal {
+    0% {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes borderPulse {
+    0% {
+      box-shadow: 0 0 0 0 rgba(30, 136, 229, 0.4);
+    }
+    70% {
+      box-shadow: 0 0 0 8px rgba(30, 136, 229, 0);
+    }
+    100% {
+      box-shadow: 0 0 0 0 rgba(30, 136, 229, 0);
+    }
+  }
+  
+  @keyframes gradientFlow {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  
+  @keyframes floatingLabel {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes buttonShine {
+    0% {
+      background-position: -100px;
+    }
+    100% {
+      background-position: 200px;
+    }
+  }
+  
+  .noteFormContainer {
+    background: linear-gradient(135deg, #ffffff 0%, #f5f9ff 100%);
+    border-radius: 15px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+    padding: 30px;
+    margin-bottom: 40px;
+    position: relative;
+    overflow: hidden;
+    animation: formReveal 0.6s ease-out;
+    transform-origin: center top;
+  }
+  
+  .noteFormContainer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(90deg, #1e3a8a, #1e88e5, #ff9800);
+    background-size: 200% 200%;
+    animation: gradientFlow 3s ease infinite;
+  }
+  
+  .noteFormContainer h2 {
+    color: #1e3a8a;
+    font-size: 1.8rem;
+    margin-bottom: 25px;
+    text-align: center;
+    position: relative;
+    letter-spacing: 0.5px;
+    font-weight: 600;
+  }
+  
+  .noteFormContainer h2::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, #1e3a8a, #ff9800);
+    border-radius: 3px;
+    transition: width 0.3s ease;
+  }
+  
+  .noteFormContainer:hover h2::after {
+    width: 100px;
+  }
+  
+  .noteForm {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .inputGroup {
+    position: relative;
+    margin-bottom: 5px;
+  }
+  
+  .inputGroup label {
+    display: block;
+    margin-bottom: 8px;
+    color: #1e3a8a;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    opacity: 0;
+    animation: floatingLabel 0.4s ease forwards;
+    animation-delay: 0.3s;
+  }
+  
+  .inputGroup input,
+  .inputGroup textarea {
+    width: 100%;
+    padding: 15px;
+    border: 2px solid #e0e9ff;
+    border-radius: 10px;
+    font-size: 16px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    background-color: #f9faff;
+    color: #333;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+  }
+  
+  .inputGroup input::placeholder,
+  .inputGroup textarea::placeholder {
+    color: #aab7c4;
+    transition: all 0.3s ease;
+  }
+  
+  .inputGroup input:focus,
+  .inputGroup textarea:focus {
+    outline: none;
+    border-color: #1e88e5;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 15px rgba(30, 136, 229, 0.15);
+    background-color: #fff;
+  }
+  
+  .inputGroup input:focus::placeholder,
+  .inputGroup textarea:focus::placeholder {
+    opacity: 0.7;
+    transform: translateX(5px);
+  }
+  
+  .inputGroup textarea {
+    min-height: 150px;
+    resize: vertical;
+    line-height: 1.6;
+  }
+  
+  .formButtons {
+    display: flex;
+    gap: 15px;
+    margin-top: 10px;
+  }
+  
+  .submitBtn,
+  .cancelBtn {
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    letter-spacing: 0.5px;
+  }
+  
+  .submitBtn {
+    background: linear-gradient(135deg, #1e3a8a 0%, #1e88e5 100%);
+    color: white;
+    border: none;
+    flex: 1;
+    box-shadow: 0 4px 15px rgba(30, 136, 229, 0.3);
+  }
+  
+  .submitBtn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100px;
+    width: 100px;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.3),
+      transparent
+    );
+    animation: buttonShine 3s infinite;
+    animation-delay: 1s;
+  }
+  
+  .submitBtn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 7px 20px rgba(30, 136, 229, 0.4);
+    background: linear-gradient(135deg, #1e4ba8 0%, #1e98ff 100%);
+  }
+  
+  .submitBtn:active {
+    transform: translateY(0);
+    box-shadow: 0 3px 10px rgba(30, 136, 229, 0.3);
+  }
+  
+  .cancelBtn {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    color: #495057;
+    border: 2px solid #e9ecef;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  }
+  
+  .cancelBtn:hover {
+    background: #fff;
+    color: #ff9800;
+    border-color: #ff9800;
+    transform: translateY(-3px);
+    box-shadow: 0 7px 15px rgba(255, 152, 0, 0.2);
+  }
+  
+  .cancelBtn:active {
+    transform: translateY(0);
+    box-shadow: 0 3px 8px rgba(255, 152, 0, 0.1);
+  }
+  
+  /* Special focus effect */
+  .inputGroup input:focus,
+  .inputGroup textarea:focus {
+    animation: borderPulse 2s infinite;
+  }
+  
+  /* Media Queries for Responsiveness */
+  @media (max-width: 768px) {
+    .noteFormContainer {
+      padding: 20px;
+      margin-bottom: 30px;
+    }
+    
+    .noteFormContainer h2 {
+      font-size: 1.6rem;
+    }
+    
+    .inputGroup input,
+    .inputGroup textarea {
+      padding: 12px;
+    }
+    
+    .submitBtn,
+    .cancelBtn {
+      padding: 12px 16px;
+      font-size: 15px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .formButtons {
+      flex-direction: column;
+    }
+    
+    .submitBtn,
+    .cancelBtn {
+      width: 100%;
+    }
+  }
