@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { HashRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Login from './components/Login';
 import SignUp from './components/SignUp';
 import ForgotPassword from './components/ForgotPassword';
@@ -29,9 +29,14 @@ function App() {
     setCurrentUser(null);
   };
 
+  // Check if we're running in GitHub Pages by checking the window location
+  const isGitHubPages = window.location.hostname === '2003manoj.github.io';
+
+  // Conditionally set basename based on the environment
+  const basename = isGitHubPages ? '/BrainDump' : '';
+
   return (
-    // Correct the basename for production (GitHub Pages)
-    <Router basename="/BrainDump">
+    <Router basename={basename}> {/* Dynamically set basename */}
       <div className="app">
         <Routes>
           <Route path="/login" element={isLoggedIn ? <Navigate to="/dashboard" /> : <Login onLogin={handleLogin} />} />
