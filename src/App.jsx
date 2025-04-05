@@ -29,11 +29,9 @@ function App() {
     setCurrentUser(null);
   };
 
-  // For GitHub Pages, the base path is /BrainDump, but for local development, no base path is needed.
-  const basename = window.location.hostname === '2003manoj.github.io' ? '/BrainDump' : '';
-
   return (
-    <Router basename={basename}>
+    // Use HashRouter here without basename
+    <Router>
       <div className="app">
         <Routes>
           <Route path="/login" element={isLoggedIn ? <Navigate to="/dashboard" /> : <Login onLogin={handleLogin} />} />
