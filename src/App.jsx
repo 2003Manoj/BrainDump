@@ -35,11 +35,11 @@ function App() {
        
         <Routes>
   
-          <Route path="/BrainDump/login" element={isLoggedIn ? <Navigate to="/dashboard" /> : <Login onLogin={handleLogin} />} />
-          <Route path="/BrainDump/signup" element={isLoggedIn ? <Navigate to="/dashboard" /> : <SignUp />} />
-          <Route path="/BrainDump/forgot-password" element={isLoggedIn ? <Navigate to="/dashboard" /> : <ForgotPassword />} />
+          <Route path="/login" element={isLoggedIn ? <Navigate to="/dashboard" /> : <Login onLogin={handleLogin} />} />
+          <Route path="/signup" element={isLoggedIn ? <Navigate to="/dashboard" /> : <SignUp />} />
+          <Route path="/forgot-password" element={isLoggedIn ? <Navigate to="/dashboard" /> : <ForgotPassword />} />
           <Route 
-            path="/BrainDump/dashboard" 
+            path="/dashboard" 
             element={isLoggedIn ? <Dashboard user={currentUser} onLogout={handleLogout} /> : <Navigate to="/login" />} 
           />
           <Route path="/BrainDump" element={<Navigate to={isLoggedIn ? "/dashboard" : "/login"} />} />
