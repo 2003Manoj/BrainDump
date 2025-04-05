@@ -30,7 +30,7 @@ function App() {
   };
 
   return (
-    // Use HashRouter here without basename
+    // Use HashRouter for routing, no need for basename
     <Router>
       <div className="app">
         <Routes>
